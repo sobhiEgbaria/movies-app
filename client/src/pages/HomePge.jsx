@@ -46,15 +46,14 @@ const HomePge = ({
             {data.map((item, index) => {
               return (
                 <Col key={index} sm={12} md={6} lg={4} xl={3}>
-                  <Link to={`/MovieDetailsPage/${item.id}`}>
-                    <MoviesCard
-                      key={index}
-                      title={item.title}
-                      releaseDate={item.release_date}
-                      voteAverage={item.vote_average}
-                      poster={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
-                    />
-                  </Link>
+                  <MoviesCard
+                    key={index}
+                    title={item.title}
+                    name={item.name}
+                    releaseDate={item.release_date}
+                    voteAverage={item.vote_average}
+                    poster={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
+                  />
                 </Col>
               );
             })}
