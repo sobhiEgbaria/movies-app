@@ -3,6 +3,14 @@
   margin: 0px;
   padding: 0px;
 }
+.Link {
+  text-decoration: none;
+  color: #2c3e50;
+}
+.Link:hover {
+  color: #2c3e50;
+  opacity: 0.7;
+}
 .logo {
   text-align: center;
   border: 1px solid black;
@@ -41,7 +49,14 @@
   padding: 15px;
 }
 
-.FilterBarBtns Button {
+.FilterBarBtns Button,
+.allMoviesAndTvBtn .link {
+  text-decoration: none;
   margin: 0px 30px;
+  padding: 5px;
+}
+
+.leftLink {
+  margin: 0px 20px;
   padding: 5px;
 }
