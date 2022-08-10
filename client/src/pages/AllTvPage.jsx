@@ -6,6 +6,7 @@ const AllTvPage = () => {
     <>
       <header>
         <NavBar />
+        <h1>gogo lolo say hi AllTvPage </h1>
       </header>
     </>
   );

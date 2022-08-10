@@ -16,6 +16,7 @@ const AllMoviesPage = () => {
     <>
       <header>
         <NavBar />
+        <h1>gogo lolo say hi AllMoviesPage </h1>
       </header>
       <main></main>
     </>

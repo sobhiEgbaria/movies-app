@@ -7,10 +7,12 @@ const FilterBarBtns = ({
   searchQuery,
   mediaTypeSearch,
   setMediaTypeSearch,
+  setPage,
 }) => {
   const clickHandler = (e) => {
     setSearchQuery(e.target.value);
     setMediaTypeSearch(e.target.id);
+    setPage(1);
     console.log(searchQuery, mediaTypeSearch);
   };
   return (
