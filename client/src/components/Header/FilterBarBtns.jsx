@@ -2,13 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const FilterBarBtns = ({
-  setSearchQuery,
-  searchQuery,
-  mediaTypeSearch,
-  setMediaTypeSearch,
-  setPage,
-}) => {
+const FilterBarBtns = ({ setSearchQuery, setMediaTypeSearch, setPage }) => {
   const clickHandler = (e) => {
     setSearchQuery(e.target.value);
     setMediaTypeSearch(e.target.id);
@@ -66,16 +60,17 @@ const FilterBarBtns = ({
       ></div>
       <div
         className="FilterBarBtns"
-        onClick={() => {
+        onClick={(e) => {
           setPage(1);
+          setMediaTypeSearch(e.target.id);
         }}
       >
-        <Link to={`/AllMoviesPage`} className="link AllMoviesPageLink ">
+        <Link to={`/AllMoviesPage`} className="link AllMoviesPageLink " id="tv">
           <i className="fa-solid fa-film"></i> GET ALL THE MOVIES{" "}
           <i className="fa-solid fa-film"></i>
         </Link>
 
-        <Link to="/AllTvPage" className="link AllTvPageLink">
+        <Link to="/AllTvPage" className="link AllTvPageLink" id="tv">
           <i className="fa-solid fa-tv"></i> GET ALL THE TV-SHOW{" "}
           <i className="fa-solid fa-tv"></i>
         </Link>

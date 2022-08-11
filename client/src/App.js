@@ -6,7 +6,7 @@ import AllMoviesPage from "./pages/AllMoviesPage/AllMoviesPage";
 import AllTvPage from "./pages/AllTvPage/AllTvPage";
 import LogIn from "./pages/LogIn";
 import Watchlist from "./pages/Watchlist";
-import MovieDetailsPage from "./pages/MovieDetailsPage";
+import MovieTvDetailsPage from "./pages/MovieTvDetailsPage";
 
 function App() {
   const [data, setData] = useState([]);
@@ -53,7 +53,12 @@ function App() {
             <Route path="/login" element={<LogIn />} />
             <Route
               path="/MovieDetailsPage/:id"
-              element={<MovieDetailsPage data={data} />}
+              element={
+                <MovieTvDetailsPage
+                  data={data}
+                  mediaTypeSearch={mediaTypeSearch}
+                />
+              }
             />
           </Routes>
         </Router>

@@ -4,6 +4,7 @@ import NavBar from "../../components/Header/NavBar";
 import PaginationComponent from "../../components/Pagination";
 import { Row, Col } from "react-bootstrap";
 import MoviesCard from "../../components/MoviesCard";
+import { Link } from "react-router-dom";
 import "./AllMoviesPage.css";
 
 // in this component i use promise all to fetch
@@ -29,7 +30,6 @@ const AllMoviesPage = ({ page, setPage }) => {
           const allDataOneArr = [...allData[0].results, ...allData[1].results];
 
           setAllMoviesData(allDataOneArr);
-          console.log(page);
         });
     };
     fetchAllMovies();
@@ -44,15 +44,17 @@ const AllMoviesPage = ({ page, setPage }) => {
         <Row>
           {allMoviesData.map((item, index) => (
             <Col key={index} sm={11} md={6} lg={4} xl={3}>
-              <MoviesCard
-                key={index}
-                title={item.title}
-                firstAirDate={item.first_air_date}
-                releaseDate={item.release_date}
-                voteAverage={item.vote_average}
-                mediaTypeSearch="movie"
-                poster={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
-              />
+              <Link to={`/MovieDetailsPage/${item.id}`} className="Link">
+                <MoviesCard
+                  key={index}
+                  title={item.title}
+                  firstAirDate={item.first_air_date}
+                  releaseDate={item.release_date}
+                  voteAverage={item.vote_average}
+                  mediaTypeSearch="movie"
+                  poster={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
+                />
+              </Link>
             </Col>
           ))}
         </Row>

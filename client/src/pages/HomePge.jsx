@@ -28,7 +28,7 @@ const HomePge = ({
       );
       setSpinner(true);
       setData(data.results);
-      // console.log(mediaTypeSearch);
+      console.log(data.results);
     };
 
     fetchData();
@@ -55,7 +55,7 @@ const HomePge = ({
               {data.map((item, index) => {
                 return (
                   <Col key={index} sm={12} md={6} lg={4} xl={3}>
-                    <Link to={`/MovieDetailsPage/:${item.id}`} className="Link">
+                    <Link to={`/MovieDetailsPage/${item.id}`} className="Link">
                       <MoviesCard
                         key={index}
                         title={item.title}
