@@ -46,7 +46,7 @@
   display: flex;
   justify-content: center;
   margin-top: 0px;
-  padding: 15px;
+  padding: 10px;
 }
 
 .FilterBarBtns Button,
@@ -60,10 +60,22 @@
   margin: 0px 20px;
   padding: 5px;
 }
+.AllMoviesPageLink,
+.AllTvPageLink {
+  padding: 0px 25px;
+  margin-bottom: 10px;
+}
 
 .Pagination {
   display: flex;
   justify-content: center;
   margin: 20px;
   padding: 5px;
+}
+
+.spinner {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

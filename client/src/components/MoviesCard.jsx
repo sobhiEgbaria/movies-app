@@ -1,8 +1,16 @@
 import React from "react";
-import { Button, Row, Col, Card, Badge } from "react-bootstrap/";
+import { Row, Col, Card } from "react-bootstrap/";
 import Rating from "./RatingStars";
 
-const MoviesCard = ({ title, releaseDate, voteAverage, poster, name }) => {
+const MoviesCard = ({
+  title,
+  releaseDate,
+  voteAverage,
+  poster,
+  name,
+  firstAirDate,
+  mediaTypeSearch,
+}) => {
   return (
     <Card className="  cardsContainer">
       <Card.Img variant="top" src={poster} className="cardPoster" />
@@ -15,14 +23,13 @@ const MoviesCard = ({ title, releaseDate, voteAverage, poster, name }) => {
         </Col>
       </Row>
       <Card.Body>
-        <Card.Title>
-          {title}
-          {name}
-        </Card.Title>
+        <Card.Title>{mediaTypeSearch === "movie" ? title : name}</Card.Title>
         <Card.Text>
           <Row>
             <Col>Release Date</Col>
-            <Col>{releaseDate}</Col>
+            <Col>
+              {mediaTypeSearch === "movie" ? releaseDate : firstAirDate}
+            </Col>
           </Row>
         </Card.Text>
       </Card.Body>

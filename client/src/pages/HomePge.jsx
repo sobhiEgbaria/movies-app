@@ -7,6 +7,7 @@ import NavBar from "../components/Header/NavBar";
 import FilterBarBtns from "../components/Header/FilterBarBtns";
 import PaginationComponent from "../components/Pagination";
 import { Link } from "react-router-dom";
+import SpinnerComponent from "../components/Spinner";
 
 const HomePge = ({
   data,
@@ -15,55 +16,69 @@ const HomePge = ({
   setSearchQuery,
   setMediaTypeSearch,
   mediaTypeSearch,
+  setPage,
+  page,
+  setSpinner,
+  spinner,
 }) => {
-  const [page, setPage] = useState(1);
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(
         `https://api.themoviedb.org/3/${mediaTypeSearch}/${searchQuery}?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US&page=${page}`
       );
+      setSpinner(true);
       setData(data.results);
+      // console.log(mediaTypeSearch);
     };
+
     fetchData();
   }, [searchQuery, mediaTypeSearch, page]);
 
   return (
     <>
-      <Container>
-        <header>
-          <NavBar />
-          <FilterBarBtns
-            setSearchQuery={setSearchQuery}
-            searchQuery={searchQuery}
-            setMediaTypeSearch={setMediaTypeSearch}
-            mediaTypeSearch={mediaTypeSearch}
-            setPage={setPage}
-          />
-        </header>
+      {spinner ? (
+        <Container>
+          <header>
+            <NavBar />
+            <FilterBarBtns
+              setSearchQuery={setSearchQuery}
+              searchQuery={searchQuery}
+              setMediaTypeSearch={setMediaTypeSearch}
+              mediaTypeSearch={mediaTypeSearch}
+              setPage={setPage}
+            />
+          </header>
 
-        <main className="mainContent">
-          <Row>
-            {data.map((item, index) => {
-              return (
-                <Col key={index} sm={12} md={6} lg={4} xl={3}>
-                  <MoviesCard
-                    key={index}
-                    title={item.title}
-                    name={item.name}
-                    releaseDate={item.release_date}
-                    voteAverage={item.vote_average}
-                    poster={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
-                  />
-                </Col>
-              );
-            })}
-          </Row>
-        </main>
+          <main className="mainContent">
+            <Row>
+              {data.map((item, index) => {
+                return (
+                  <Col key={index} sm={12} md={6} lg={4} xl={3}>
+                    <Link to={`/MovieDetailsPage/:${item.id}`} className="Link">
+                      <MoviesCard
+                        key={index}
+                        title={item.title}
+                        name={item.name}
+                        firstAirDate={item.first_air_date}
+                        releaseDate={item.release_date}
+                        voteAverage={item.vote_average}
+                        poster={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
+                        mediaTypeSearch={mediaTypeSearch}
+                      />
+                    </Link>
+                  </Col>
+                );
+              })}
+            </Row>
+          </main>
 
-        <footer>
-          <PaginationComponent setPage={setPage} />
-        </footer>
-      </Container>
+          <footer>
+            <PaginationComponent setPage={setPage} />
+          </footer>
+        </Container>
+      ) : (
+        <SpinnerComponent />
+      )}
     </>
   );
 };

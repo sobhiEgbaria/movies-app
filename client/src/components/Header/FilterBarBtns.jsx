@@ -64,13 +64,14 @@ const FilterBarBtns = ({
         onClick={(e) => {
           clickHandler(e);
         }}
-      >
-        <Link to="/AllMoviesPage" className="link">
+      ></div>
+      <div className="FilterBarBtns">
+        <Link to="/AllMoviesPage" className="link AllMoviesPageLink ">
           <i className="fa-solid fa-film"></i> GET ALL THE MOVIES{" "}
           <i className="fa-solid fa-film"></i>
         </Link>
 
-        <Link to="/AllTvPage" className="link">
+        <Link to="/AllTvPage" className="link AllTvPageLink">
           <i className="fa-solid fa-tv"></i> GET ALL THE TV-SHOW{" "}
           <i className="fa-solid fa-tv"></i>
         </Link>
