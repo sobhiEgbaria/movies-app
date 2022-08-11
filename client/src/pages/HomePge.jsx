@@ -46,6 +46,7 @@ const HomePge = ({
               setMediaTypeSearch={setMediaTypeSearch}
               mediaTypeSearch={mediaTypeSearch}
               setPage={setPage}
+              page={page}
             />
           </header>
 

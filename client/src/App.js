@@ -49,7 +49,7 @@ function App() {
               path="/AllMoviesPage"
               element={<AllMoviesPage page={page} setPage={setPage} />}
             />
-            <Route path="/watchlist" element={<Watchlist />} />
+            <Route path="/watchlist/" element={<Watchlist />} />
             <Route path="/login" element={<LogIn />} />
             <Route
               path="/MovieDetailsPage/:id"

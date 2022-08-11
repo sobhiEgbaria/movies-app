@@ -13,7 +13,6 @@ const FilterBarBtns = ({
     setSearchQuery(e.target.value);
     setMediaTypeSearch(e.target.id);
     setPage(1);
-    console.log(searchQuery, mediaTypeSearch);
   };
   return (
     <>
@@ -65,8 +64,13 @@ const FilterBarBtns = ({
           clickHandler(e);
         }}
       ></div>
-      <div className="FilterBarBtns">
-        <Link to="/AllMoviesPage" className="link AllMoviesPageLink ">
+      <div
+        className="FilterBarBtns"
+        onClick={() => {
+          setPage(1);
+        }}
+      >
+        <Link to={`/AllMoviesPage`} className="link AllMoviesPageLink ">
           <i className="fa-solid fa-film"></i> GET ALL THE MOVIES{" "}
           <i className="fa-solid fa-film"></i>
         </Link>

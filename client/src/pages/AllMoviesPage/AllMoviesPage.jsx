@@ -1,4 +1,3 @@
-import axios from "axios";
 import React from "react";
 import { useEffect, useState } from "react";
 import NavBar from "../../components/Header/NavBar";
@@ -12,28 +11,29 @@ const AllMoviesPage = ({ page, setPage }) => {
   const [allMoviesData, setAllMoviesData] = useState([]);
   useEffect(() => {
     const fetchAllMovies = () => {
-      const data1 = fetch(
+      const fetchData1 = fetch(
         `https://api.themoviedb.org/3/discover/movie?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_watch_monetization_types=flatrate`
       );
-      const data2 = fetch(
+      const fetchData2 = fetch(
         `https://api.themoviedb.org/3/discover/movie?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${
-          page + 1
+          500 - page
         }&with_watch_monetization_types=flatrate`
       );
 
-      Promise.all([data1, data2])
+      Promise.all([fetchData1, fetchData2])
         .then((allData) => {
           return Promise.all(allData.map((item) => item.json()));
         })
 
         .then((allData) => {
-          const all = [...allData[0].results, ...allData[1].results];
+          const allDataOneArr = [...allData[0].results, ...allData[1].results];
 
-          setAllMoviesData(all);
+          setAllMoviesData(allDataOneArr);
+          console.log(page);
         });
     };
     fetchAllMovies();
-  }, [allMoviesData]);
+  }, [page]);
 
   return (
     <>

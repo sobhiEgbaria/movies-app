@@ -13,7 +13,12 @@ const MoviesCard = ({
 }) => {
   return (
     <Card className="  cardsContainer">
-      <Card.Img variant="top" src={poster} className="cardPoster" />
+      <Card.Img
+        variant="top"
+        src={poster}
+        className="cardPoster"
+        alt="if the image doesn't show please refresh the page"
+      />
       <Row>
         <Col>
           <span>

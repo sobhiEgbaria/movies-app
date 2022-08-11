@@ -1,4 +1,3 @@
-import axios from "axios";
 import React from "react";
 import { useEffect, useState } from "react";
 import NavBar from "../../components/Header/NavBar";
@@ -7,17 +6,32 @@ import { Container, Row, Col } from "react-bootstrap";
 import MoviesCard from "../../components/MoviesCard";
 
 const AllTvPage = ({ page, setPage }) => {
-  const [allTvData, setDataAllTvData] = useState([]);
+  const [allTvData, setAllTvData] = useState([]);
   useEffect(() => {
-    const fetchAllMovies = async () => {
-      const { data } = await axios.get(
+    const fetchAllTvShows = () => {
+      const fetchData1 = fetch(
         `https://api.themoviedb.org/3/discover/tv?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US&sort_by=popularity.desc&page=${page}&timezone=America%2FNew_York&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`
       );
+      const fetchData2 = fetch(
+        `https://api.themoviedb.org/3/discover/tv?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US&sort_by=popularity.desc&page=${
+          500 - page
+        }&timezone=America%2FNew_York&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`
+      );
 
-      setDataAllTvData(data.results);
+      Promise.all([fetchData1, fetchData2])
+        .then((allData) => {
+          return Promise.all(allData.map((item) => item.json()));
+        })
+
+        .then((allData) => {
+          const allDataOneArr = [...allData[0].results, ...allData[1].results];
+          console.log(allDataOneArr);
+
+          setAllTvData(allDataOneArr);
+        });
     };
-    fetchAllMovies();
-  }, [allTvData]);
+    fetchAllTvShows();
+  }, [page]);
 
   return (
     <>
@@ -27,7 +41,7 @@ const AllTvPage = ({ page, setPage }) => {
       <main>
         <Row>
           {allTvData.map((item, index) => (
-            <Col key={index} sm={11} md={5} lg={3} xl={2}>
+            <Col key={index} sm={12} md={6} lg={4} xl={3}>
               <MoviesCard
                 key={index}
                 name={item.name}
