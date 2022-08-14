@@ -5,8 +5,7 @@ import PaginationComponent from "../../components/Pagination";
 import { Row, Col } from "react-bootstrap";
 import MoviesCard from "../../components/MoviesCard";
 import { Link } from "react-router-dom";
-import "./AllMoviesPage.css";
-
+import SearchBar from "../../components/SearchBar";
 // in this component i use promise all to fetch
 const AllMoviesPage = ({ page, setPage }) => {
   const [allMoviesData, setAllMoviesData] = useState([]);
@@ -39,6 +38,7 @@ const AllMoviesPage = ({ page, setPage }) => {
     <>
       <header>
         <NavBar />
+        <SearchBar />
       </header>
       <main>
         <Row>

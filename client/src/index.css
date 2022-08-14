@@ -3,6 +3,10 @@
   margin: 0px;
   padding: 0px;
 }
+.flex {
+  display: flex;
+  text-align: center;
+}
 .Link {
   text-decoration: none;
   color: #2c3e50;
@@ -19,7 +23,8 @@
 }
 
 .formSearch {
-  min-width: 50%;
+  display: flex;
+  justify-content: center;
 }
 
 #starsColor {
@@ -78,4 +83,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.searchBar {
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 20px;
 }

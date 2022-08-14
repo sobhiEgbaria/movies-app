@@ -39,7 +39,12 @@ const HomePge = ({
       {spinner ? (
         <Container>
           <header>
-            <NavBar />
+            <NavBar
+              setSearchQuery={setSearchQuery}
+              setMediaTypeSearch={setMediaTypeSearch}
+              setPage={setPage}
+              mediaTypeSearch={mediaTypeSearch}
+            />
             <FilterBarBtns
               setSearchQuery={setSearchQuery}
               searchQuery={searchQuery}

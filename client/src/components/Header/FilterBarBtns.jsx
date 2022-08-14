@@ -30,6 +30,7 @@ const FilterBarBtns = ({ setSearchQuery, setMediaTypeSearch, setPage }) => {
           Now Playing
         </Button>
       </div>
+
       <div
         aria-label="Basic example"
         className="FilterBarBtns"
@@ -50,30 +51,6 @@ const FilterBarBtns = ({ setSearchQuery, setMediaTypeSearch, setPage }) => {
         <Button variant="outline-primary" value="airing_today" id="tv">
           TV-SHOW Airing Today
         </Button>
-      </div>
-      <div
-        aria-label="Basic example"
-        className="FilterBarBtns allMoviesAndTvBtn"
-        onClick={(e) => {
-          clickHandler(e);
-        }}
-      ></div>
-      <div
-        className="FilterBarBtns"
-        onClick={(e) => {
-          setPage(1);
-          setMediaTypeSearch(e.target.id);
-        }}
-      >
-        <Link to={`/AllMoviesPage`} className="link AllMoviesPageLink " id="tv">
-          <i className="fa-solid fa-film"></i> GET ALL THE MOVIES{" "}
-          <i className="fa-solid fa-film"></i>
-        </Link>
-
-        <Link to="/AllTvPage" className="link AllTvPageLink" id="tv">
-          <i className="fa-solid fa-tv"></i> GET ALL THE TV-SHOW{" "}
-          <i className="fa-solid fa-tv"></i>
-        </Link>
       </div>
     </>
   );

@@ -5,7 +5,7 @@ import PaginationComponent from "../../components/Pagination";
 import { Container, Row, Col } from "react-bootstrap";
 import MoviesCard from "../../components/MoviesCard";
 import { Link } from "react-router-dom";
-
+import SearchBar from "../../components/SearchBar";
 const AllTvPage = ({ page, setPage }) => {
   const [allTvData, setAllTvData] = useState([]);
   useEffect(() => {
@@ -38,6 +38,7 @@ const AllTvPage = ({ page, setPage }) => {
     <>
       <header>
         <NavBar />
+        <SearchBar />
       </header>
       <main>
         <Row>
