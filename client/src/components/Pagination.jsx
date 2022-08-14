@@ -16,9 +16,15 @@ const PaginationComponent = ({ setPage }) => {
       <Pagination.Item>{7}</Pagination.Item>
       <Pagination.Item>{8}</Pagination.Item>
       <Pagination.Item>{9}</Pagination.Item>
-      <Pagination.Item>{10}</Pagination.Item>
-
-      <Pagination.Ellipsis />
+      <Pagination.Item>{11}</Pagination.Item>
+      <Pagination.Item>{12}</Pagination.Item>
+      <Pagination.Item>{13}</Pagination.Item>
+      <Pagination.Item>{14}</Pagination.Item>
+      <Pagination.Item>{15}</Pagination.Item>
+      <Pagination.Item>{16}</Pagination.Item>
+      <Pagination.Item>{17}</Pagination.Item>
+      <Pagination.Item>{18}</Pagination.Item>
+      <Pagination.Item>{19}</Pagination.Item>
       <Pagination.Item>{20}</Pagination.Item>
       <Pagination.Next />
     </Pagination>

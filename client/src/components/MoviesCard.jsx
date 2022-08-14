@@ -9,7 +9,6 @@ const MoviesCard = ({
   poster,
   name,
   firstAirDate,
-  mediaTypeSearch,
 }) => {
   return (
     <Card className="  cardsContainer">
@@ -24,17 +23,15 @@ const MoviesCard = ({
           <span>
             <Rating voteAverage={voteAverage} />
           </span>
-          {voteAverage}
+          <span className="p-1">{voteAverage}</span>
         </Col>
       </Row>
       <Card.Body>
-        <Card.Title>{mediaTypeSearch === "movie" ? title : name}</Card.Title>
+        <Card.Title>{title || name}</Card.Title>
         <Card.Text>
           <Row>
             <Col>Release Date</Col>
-            <Col>
-              {mediaTypeSearch === "movie" ? releaseDate : firstAirDate}
-            </Col>
+            <Col>{releaseDate || firstAirDate}</Col>
           </Row>
         </Card.Text>
       </Card.Body>

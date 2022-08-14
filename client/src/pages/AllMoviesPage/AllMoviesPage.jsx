@@ -13,19 +13,18 @@ const AllMoviesPage = ({ page, setPage }) => {
   const [searchHandler, setSearchHandler] = useState("");
   const [renderHelper, setRenderHelper] = useState(false);
 
+  // const [numOfPages, setNumOfPages] = useState(null);
   // const [searchMoviesData, setSearchMoviesData] = useState([]);
   // const [renderingData, setRenderingData] = useState([]);
 
   useEffect(() => {
     const fetchAllMovies = () => {
       const fetchData1 = fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${
-          page + 1
-        }&with_watch_monetization_types=flatrate`
+        `https://api.themoviedb.org/3/discover/movie?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_watch_monetization_types=flatrate`
       );
       const fetchData2 = fetch(
         `https://api.themoviedb.org/3/discover/movie?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${
-          500 - page
+          50 - page
         }&with_watch_monetization_types=flatrate`
       );
 
