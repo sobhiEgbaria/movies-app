@@ -43,11 +43,23 @@ function App() {
             />
             <Route
               path="/AllTvPage"
-              element={<AllTvPage page={page} setPage={setPage} />}
+              element={
+                <AllTvPage
+                  page={page}
+                  setPage={setPage}
+                  setMediaTypeSearch={setMediaTypeSearch}
+                />
+              }
             />
             <Route
               path="/AllMoviesPage"
-              element={<AllMoviesPage page={page} setPage={setPage} />}
+              element={
+                <AllMoviesPage
+                  page={page}
+                  setPage={setPage}
+                  setMediaTypeSearch={setMediaTypeSearch}
+                />
+              }
             />
             <Route path="/watchlist/" element={<Watchlist />} />
             <Route path="/login" element={<LogIn />} />

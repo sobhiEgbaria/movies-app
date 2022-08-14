@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 
-const NavBar = ({ setMediaTypeSearch, setPage, mediaTypeSearch }) => {
+const NavBar = ({ setPage, renderHelper, setRenderHelper }) => {
+  const clickHandler = (e) => {
+    setPage(1);
+    setRenderHelper(!renderHelper);
+    console.log(renderHelper);
+  };
   return (
     <>
       <Navbar bg="light" variant="light" className="mb-5">
@@ -22,16 +27,14 @@ const NavBar = ({ setMediaTypeSearch, setPage, mediaTypeSearch }) => {
           <Nav className="me-auto">
             <div
               className="FilterBarBtns"
-              // onClick={(e) => {
-              //   setPage(1);
-              //   setMediaTypeSearch(e.target.id);
-              //   console.log(mediaTypeSearch);
-              // }}
+              onClick={(e) => {
+                clickHandler(e);
+              }}
             >
               <Link
                 to="/AllMoviesPage"
                 className="Link AllMoviesPageLink "
-                id="tv"
+                id="movies"
               >
                 ALL THE MOVIES<i className="fa-solid fa-film fa-fw"></i>
               </Link>

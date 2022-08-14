@@ -12,7 +12,6 @@ const SearchBar = () => {
           className="me-3 searchBar"
           aria-label="Search"
         />
-        {/* <Button variant="outline-secondary">Search</Button> */}
       </Form>
     </Container>
   );

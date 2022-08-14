@@ -28,7 +28,6 @@ const HomePge = ({
       );
       setSpinner(true);
       setData(data.results);
-      console.log(data.results);
     };
 
     fetchData();
@@ -41,9 +40,11 @@ const HomePge = ({
           <header>
             <NavBar
               setSearchQuery={setSearchQuery}
+              searchQuery={searchQuery}
               setMediaTypeSearch={setMediaTypeSearch}
-              setPage={setPage}
               mediaTypeSearch={mediaTypeSearch}
+              setPage={setPage}
+              page={page}
             />
             <FilterBarBtns
               setSearchQuery={setSearchQuery}
