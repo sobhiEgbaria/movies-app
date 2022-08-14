@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import SearchBar from "../../components/SearchBar";
 import axios from "axios";
 // in this component i use promise all to fetch
-const AllMoviesPage = ({ page, setPage, setMediaTypeSearch }) => {
+const AllMoviesPage = ({ page, setPage }) => {
   const [allMoviesData, setAllMoviesData] = useState([]);
   const [searchHandler, setSearchHandler] = useState("");
   const [renderHelper, setRenderHelper] = useState(false);
@@ -19,7 +19,9 @@ const AllMoviesPage = ({ page, setPage, setMediaTypeSearch }) => {
   useEffect(() => {
     const fetchAllMovies = () => {
       const fetchData1 = fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_watch_monetization_types=flatrate`
+        `https://api.themoviedb.org/3/discover/movie?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${
+          page + 1
+        }&with_watch_monetization_types=flatrate`
       );
       const fetchData2 = fetch(
         `https://api.themoviedb.org/3/discover/movie?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import HomePge from "./pages/HomePge";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import AllMoviesPage from "./pages/AllMoviesPage/AllMoviesPage";
 import AllTvPage from "./pages/AllTvPage/AllTvPage";
 import LogIn from "./pages/LogIn";
@@ -28,8 +28,8 @@ function App() {
               path="/"
               element={
                 <HomePge
-                  setData={setData}
                   data={data}
+                  setData={setData}
                   searchQuery={searchQuery}
                   setSearchQuery={setSearchQuery}
                   mediaTypeSearch={mediaTypeSearch}
@@ -43,23 +43,11 @@ function App() {
             />
             <Route
               path="/AllTvPage"
-              element={
-                <AllTvPage
-                  page={page}
-                  setPage={setPage}
-                  setMediaTypeSearch={setMediaTypeSearch}
-                />
-              }
+              element={<AllTvPage page={page} setPage={setPage} />}
             />
             <Route
               path="/AllMoviesPage"
-              element={
-                <AllMoviesPage
-                  page={page}
-                  setPage={setPage}
-                  setMediaTypeSearch={setMediaTypeSearch}
-                />
-              }
+              element={<AllMoviesPage page={page} setPage={setPage} />}
             />
             <Route path="/watchlist/" element={<Watchlist />} />
             <Route path="/login" element={<LogIn />} />

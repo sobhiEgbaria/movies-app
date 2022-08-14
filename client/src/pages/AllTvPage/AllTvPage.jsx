@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import NavBar from "../../components/Header/NavBar";
 import PaginationComponent from "../../components/Pagination";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import MoviesCard from "../../components/MoviesCard";
 import { Link } from "react-router-dom";
 import SearchBar from "../../components/SearchBar";
@@ -15,7 +15,9 @@ const AllTvPage = ({ page, setPage }) => {
   useEffect(() => {
     const fetchAllTvShows = () => {
       const fetchData1 = fetch(
-        `https://api.themoviedb.org/3/discover/tv?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US&sort_by=popularity.desc&page=${page}&timezone=America%2FNew_York&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`
+        `https://api.themoviedb.org/3/discover/tv?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US&sort_by=popularity.desc&page=${
+          page + 1
+        }&timezone=America%2FNew_York&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`
       );
       const fetchData2 = fetch(
         `https://api.themoviedb.org/3/discover/tv?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US&sort_by=popularity.desc&page=${

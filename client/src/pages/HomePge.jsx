@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import axios from "axios";
 import { useEffect } from "react";
@@ -38,21 +38,11 @@ const HomePge = ({
       {spinner ? (
         <Container>
           <header>
-            <NavBar
-              setSearchQuery={setSearchQuery}
-              searchQuery={searchQuery}
-              setMediaTypeSearch={setMediaTypeSearch}
-              mediaTypeSearch={mediaTypeSearch}
-              setPage={setPage}
-              page={page}
-            />
+            <NavBar setPage={setPage} />
             <FilterBarBtns
               setSearchQuery={setSearchQuery}
-              searchQuery={searchQuery}
               setMediaTypeSearch={setMediaTypeSearch}
-              mediaTypeSearch={mediaTypeSearch}
               setPage={setPage}
-              page={page}
             />
           </header>
 

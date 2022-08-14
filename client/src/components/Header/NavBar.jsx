@@ -1,15 +1,12 @@
-import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+import React from "react";
+import { Container, Nav, Navbar } from "react-bootstrap";
+
 import { Link } from "react-router-dom";
 
 const NavBar = ({ setPage, renderHelper, setRenderHelper }) => {
   const clickHandler = (e) => {
     setPage(1);
     setRenderHelper(!renderHelper);
-    console.log(renderHelper);
   };
   return (
     <>
@@ -36,16 +33,15 @@ const NavBar = ({ setPage, renderHelper, setRenderHelper }) => {
                 className="Link AllMoviesPageLink "
                 id="movies"
               >
-                ALL THE MOVIES<i className="fa-solid fa-film fa-fw"></i>
+                ALL THE MOVIES<i className="fa-solid fa-film fa-fw  p-1"></i>
               </Link>
+
               <Link to="/AllTvPage" className="Link AllTvPageLink" id="tv">
-                ALL THE TV-SHOW <i className="fa-solid fa-tv fa-fw"></i>
+                ALL THE TV-SHOW <i className="fa-solid fa-tv fa-fw  p-1"></i>
               </Link>
-              <Link
-                to="/watchlist"
-                className="Link AllTvPageLink FilterBarBtns"
-              >
-                Watch List
+
+              <Link to="/watchlist" className="Link AllTvPageLink">
+                Watch List <i class="fa-solid fa-list p-1"></i>
               </Link>
             </div>
           </Nav>
