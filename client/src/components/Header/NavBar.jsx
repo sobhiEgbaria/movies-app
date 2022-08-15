@@ -1,13 +1,8 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
-
 import { Link } from "react-router-dom";
 
-const NavBar = ({ setPage, renderHelper, setRenderHelper }) => {
-  const clickHandler = (e) => {
-    setPage(1);
-    setRenderHelper(!renderHelper);
-  };
+const NavBar = ({}) => {
   return (
     <>
       <Navbar bg="light" variant="light" className="mb-5">
@@ -22,22 +17,19 @@ const NavBar = ({ setPage, renderHelper, setRenderHelper }) => {
           </Navbar.Brand>
 
           <Nav className="me-auto">
-            <div
-              className="FilterBarBtns"
-              onClick={(e) => {
-                clickHandler(e);
-              }}
-            >
+            <div className="FilterBarBtns">
               <Link
                 to="/AllMoviesPage"
                 className="Link AllMoviesPageLink "
                 id="movies"
               >
-                ALL THE MOVIES<i className="fa-solid fa-film fa-fw  p-1"></i>
+                ALL THE MOVIES
+                <i className="fa-solid fa-film fa-fw  p-1 " id="movies"></i>
               </Link>
 
               <Link to="/AllTvPage" className="Link AllTvPageLink" id="tv">
-                ALL THE TV-SHOW <i className="fa-solid fa-tv fa-fw  p-1"></i>
+                ALL THE TV-SHOW{" "}
+                <i className="fa-solid fa-tv fa-fw  p-1" id="tv"></i>
               </Link>
 
               <Link to="/watchlist" className="Link AllTvPageLink">

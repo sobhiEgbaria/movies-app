@@ -24,7 +24,7 @@ const HomePge = ({
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(
-        `https://api.themoviedb.org/3/${mediaTypeSearch}/${searchQuery}?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US&page=${page}`
+        `https://api.themoviedb.org/3/${mediaTypeSearch}/${searchQuery}?api_key=8c5382be42ac80e40fd763bc48f73c07&page=${page}`
       );
       setSpinner(true);
       setData(data.results);
@@ -38,7 +38,11 @@ const HomePge = ({
       {spinner ? (
         <Container>
           <header>
-            <NavBar setPage={setPage} />
+            <NavBar
+              setPage={setPage}
+              setMediaTypeSearch={setMediaTypeSearch}
+              mediaTypeSearch={mediaTypeSearch}
+            />
             <FilterBarBtns
               setSearchQuery={setSearchQuery}
               setMediaTypeSearch={setMediaTypeSearch}

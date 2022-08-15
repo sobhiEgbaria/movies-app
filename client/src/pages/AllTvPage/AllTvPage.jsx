@@ -7,20 +7,19 @@ import MoviesCard from "../../components/MoviesCard";
 import { Link } from "react-router-dom";
 import SearchBar from "../../components/SearchBar";
 import axios from "axios";
-const AllTvPage = ({ page, setPage }) => {
+const AllTvPage = ({ page, setPage, mediaTypeSearch, setMediaTypeSearch }) => {
   const [allTvData, setAllTvData] = useState([]);
   const [searchHandler, setSearchHandler] = useState("");
-  const [renderHelper, setRenderHelper] = useState(false);
 
   useEffect(() => {
     const fetchAllTvShows = () => {
       const fetchData1 = fetch(
-        `https://api.themoviedb.org/3/discover/tv?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US&sort_by=popularity.desc&page=${page}&timezone=America%2FNew_York&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`
+        `https://api.themoviedb.org/3/discover/tv?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US&sort_by=popularity.desc&page=${page}`
       );
       const fetchData2 = fetch(
         `https://api.themoviedb.org/3/discover/tv?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US&sort_by=popularity.desc&page=${
           50 - page
-        }&timezone=America%2FNew_York&includerenderHelper_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`
+        }`
       );
 
       Promise.all([fetchData1, fetchData2])
@@ -30,13 +29,12 @@ const AllTvPage = ({ page, setPage }) => {
 
         .then((allData) => {
           const allDataOneArr = [...allData[0].results, ...allData[1].results];
-          console.log(allDataOneArr);
 
           setAllTvData(allDataOneArr);
         });
     };
     fetchAllTvShows();
-  }, [page, renderHelper]);
+  }, [page]);
 
   useEffect(() => {
     const fetchSearchMovies = async () => {
@@ -44,7 +42,6 @@ const AllTvPage = ({ page, setPage }) => {
         `https://api.themoviedb.org/3/search/tv?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US&page=1&include_adult=false&query=${searchHandler}`
       );
       setAllTvData(data.results);
-      console.log("call");
     };
 
     const searchTimer = setTimeout(() => {
@@ -59,11 +56,7 @@ const AllTvPage = ({ page, setPage }) => {
   return (
     <>
       <header>
-        <NavBar
-          setPage={setPage}
-          setRenderHelper={setRenderHelper}
-          renderHelper={renderHelper}
-        />
+        <NavBar />
         <div
           className="searchHandler"
           value={searchHandler}
@@ -78,14 +71,20 @@ const AllTvPage = ({ page, setPage }) => {
         <Row>
           {allTvData.map((item, index) => (
             <Col key={index} sm={12} md={6} lg={4} xl={3}>
-              <Link to={`/MovieDetailsPage/${item.id}`} className="Link">
+              <Link
+                to={`/MovieDetailsPage/${item.id}`}
+                className="Link"
+                onClick={(e) => {
+                  setMediaTypeSearch("tv");
+                }}
+              >
                 <MoviesCard
                   key={index}
                   name={item.name}
                   firstAirDate={item.first_air_date}
                   releaseDate={item.release_date}
                   voteAverage={item.vote_average}
-                  mediaTypeSearch="tv"
+                  mediaTypeSearch={mediaTypeSearch}
                   poster={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
                 />
               </Link>

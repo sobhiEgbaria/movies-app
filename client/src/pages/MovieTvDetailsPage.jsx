@@ -17,7 +17,6 @@ const MovieTvDetailsPage = ({ mediaTypeSearch }) => {
         `https://api.themoviedb.org/3/${mediaTypeSearch}/${params.id}?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US`
       );
       setDetailsData(data);
-      console.log(detailsData);
     };
 
     fetchDetails();
@@ -29,7 +28,6 @@ const MovieTvDetailsPage = ({ mediaTypeSearch }) => {
         `https://api.themoviedb.org/3/${mediaTypeSearch}/${params.id}/videos?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US`
       );
       setYoutubeVideo(data.results[0].key);
-      console.log(detailsData);
     };
 
     fetchDetails();
@@ -84,12 +82,3 @@ const MovieTvDetailsPage = ({ mediaTypeSearch }) => {
 };
 
 export default MovieTvDetailsPage;
-{
-  /*  */
-}
-{
-  /*  */
-}
-{
-  /*  */
-}
