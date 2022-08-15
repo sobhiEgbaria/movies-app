@@ -21,6 +21,7 @@ const HomePge = ({
   setSpinner,
   spinner,
 }) => {
+  // const KEY = process.env.KEY;
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(

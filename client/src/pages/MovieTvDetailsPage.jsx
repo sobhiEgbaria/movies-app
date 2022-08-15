@@ -51,7 +51,7 @@ const MovieTvDetailsPage = ({ mediaTypeSearch }) => {
             </Figure>
           </Col>
           <Col>
-            <Card className="  cardsContainer VideoContainer ">
+            <Card className="    VideoContainer ">
               <div className="ui embed">
                 <iframe
                   width="420"
