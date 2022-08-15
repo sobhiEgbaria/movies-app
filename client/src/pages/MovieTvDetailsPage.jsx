@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Figure, Row, Col, Card } from "react-bootstrap";
 import Rating from "../components/RatingStars";
+import CastCarousel from "../components/CastCards";
 
 const MovieTvDetailsPage = ({ mediaTypeSearch }) => {
   const params = useParams();
@@ -75,6 +76,9 @@ const MovieTvDetailsPage = ({ mediaTypeSearch }) => {
             </Figure.Caption>
             <Figure.Caption>{detailsData.overview}</Figure.Caption>
           </Col>
+        </Row>
+        <Row className="m-4 ">
+          <CastCarousel mediaTypeSearch={mediaTypeSearch} id={params.id} />
         </Row>
       </main>
     </>
