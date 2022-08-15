@@ -12,6 +12,22 @@ const AllTvPage = ({ page, setPage, mediaTypeSearch, setMediaTypeSearch }) => {
   const [searchHandler, setSearchHandler] = useState("");
 
   useEffect(() => {
+    if (searchHandler != "") {
+      const fetchSearchMovies = async () => {
+        const { data } = await axios.get(
+          `https://api.themoviedb.org/3/search/tv?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US&page=1&include_adult=false&query=${searchHandler}`
+        );
+        setAllTvData(data.results);
+      };
+
+      const searchTimer = setTimeout(() => {
+        fetchSearchMovies();
+      }, 500);
+
+      return () => {
+        clearTimeout(searchTimer);
+      };
+    }
     const fetchAllTvShows = () => {
       const fetchData1 = fetch(
         `https://api.themoviedb.org/3/discover/tv?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US&sort_by=popularity.desc&page=${page}`
@@ -34,24 +50,7 @@ const AllTvPage = ({ page, setPage, mediaTypeSearch, setMediaTypeSearch }) => {
         });
     };
     fetchAllTvShows();
-  }, [page]);
-
-  useEffect(() => {
-    const fetchSearchMovies = async () => {
-      const { data } = await axios.get(
-        `https://api.themoviedb.org/3/search/tv?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US&page=1&include_adult=false&query=${searchHandler}`
-      );
-      setAllTvData(data.results);
-    };
-
-    const searchTimer = setTimeout(() => {
-      fetchSearchMovies();
-    }, 500);
-
-    return () => {
-      clearTimeout(searchTimer);
-    };
-  }, [searchHandler]);
+  }, [searchHandler, page]);
 
   return (
     <>
