@@ -24,14 +24,14 @@ const MovieTvDetailsPage = ({ mediaTypeSearch }) => {
   }, [mediaTypeSearch]);
 
   useEffect(() => {
-    const fetchDetails = async () => {
+    const fetchVideos = async () => {
       const { data } = await axios.get(
         `https://api.themoviedb.org/3/${mediaTypeSearch}/${params.id}/videos?api_key=8c5382be42ac80e40fd763bc48f73c07&language=en-US`
       );
       setYoutubeVideo(data.results[0].key);
     };
 
-    fetchDetails();
+    fetchVideos();
   }, [mediaTypeSearch]);
 
   return (
