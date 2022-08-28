@@ -1,11 +1,12 @@
 import axios from "axios";
 import React from "react";
 import NavBar from "../components/Header/NavBar";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Figure, Row, Col, Card } from "react-bootstrap";
 import Rating from "../components/RatingStars";
 import CastCarousel from "../components/CastCards";
+import AddToWatchList from "../components/AddToWatchList";
 
 const MovieTvDetailsPage = ({ mediaTypeSearch }) => {
   const params = useParams();
@@ -64,7 +65,10 @@ const MovieTvDetailsPage = ({ mediaTypeSearch }) => {
           </Col>
           <Col>
             <span>
-              <h3>{detailsData.title || detailsData.name} </h3>
+              <h3>{detailsData.title || detailsData.name}</h3>{" "}
+              <Link to="/watchlist" className="Link AllTvPageLink">
+                <AddToWatchList />
+              </Link>
             </span>
 
             <Figure.Caption>
@@ -74,7 +78,7 @@ const MovieTvDetailsPage = ({ mediaTypeSearch }) => {
               <Rating voteAverage={detailsData.vote_average} />
               <strong className="p-1">{detailsData.vote_average}</strong>{" "}
             </Figure.Caption>
-            <Figure.Caption>{detailsData.overview}</Figure.Caption>
+            <Figure.Caption>{detailsData.overview} </Figure.Caption>
           </Col>
           <Row className="m-4 ">
             <CastCarousel mediaTypeSearch={mediaTypeSearch} id={params.id} />
